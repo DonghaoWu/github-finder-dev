@@ -1,15 +1,18 @@
-import React, { Fragment, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { Fragment, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import Spinner from '../layout/Spinner';
 import Repos from '../repos/Repos';
 
-import { Link } from 'react-router-dom';
+import GithubContext from '../../context/github/githubContext'
 
-const User = ({ getUser, user, loading, match, getUserRepos, repos }) => {
+const User = ({ match }) => {
+    const { getUser, user, loading, getUserRepos, repos } = useContext(GithubContext);
+
     useEffect(() => {
         getUser(match.params.username);
         getUserRepos(match.params.username);
+        // eslint-disable-next-line
     }, [])
 
     const {
@@ -21,7 +24,7 @@ const User = ({ getUser, user, loading, match, getUserRepos, repos }) => {
         login,
         html_url,
         followers,
-        followings,
+        following,
         public_repos,
         public_gists,
         hireable,
@@ -73,7 +76,7 @@ const User = ({ getUser, user, loading, match, getUserRepos, repos }) => {
                 </div>
                 <div className='card text-center'>
                     <div className='badge badge-primary'>Followers:{followers}</div>
-                    <div className='badge badge-success'>Following:{followings}</div>
+                    <div className='badge badge-success'>Following:{following}</div>
                     <div className='badge badge-light'>Publi Repos:{public_repos}</div>
                     <div className='badge badge-dark'>Public Gists:{public_gists}</div>
                 </div>
@@ -82,12 +85,4 @@ const User = ({ getUser, user, loading, match, getUserRepos, repos }) => {
     )
 }
 
-User.propTypes = {
-    getUser: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired,
-    loading: PropTypes.bool.isRequired,
-    getUserRepos: PropTypes.func.isRequired,
-    repos: PropTypes.array.isRequired,
-}
-
-export default User
+export default User;

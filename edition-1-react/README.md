@@ -151,3 +151,5 @@ const User = ({ getUser, user, loading, match, getUserRepos, repos }) => {
     //...
 }
 ```
+
+13. 传递 `{...props}` 是为了能够传递 match 到达 User component。
