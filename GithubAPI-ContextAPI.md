@@ -92,21 +92,22 @@
     this.props.icon
     ```
 
-3. Certain columns in a row (flex)
+3. Set up certain columns in a row (flex)
 
     ```css
     .item-container {
-    width: 100%;
-    
-    text-align: center;
-    display: flex;
-    align-content: flex-start;
-    flex-flow: row wrap;
-    }
+        width: 100%;
+        
+        text-align: center;
+            display: flex;
+            align-content: flex-start;
+            flex-flow: row wrap;
+        }
 
-    .item {
-    flex: 0 0 25%;
-    margin-bottom: 20px;
+        .item {
+            flex: 0 0 25%;
+            margin-bottom: 20px;
+        }
     }
     ```
 
