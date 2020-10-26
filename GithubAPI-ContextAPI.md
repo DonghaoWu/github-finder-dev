@@ -564,7 +564,7 @@ const User = ({ getUser, user, loading, match, getUserRepos, repos }) => {
     </p>
 
     -----------------------------------------------------------------
-        <p align="center">
+    <p align="center">
         <img src="./assets/fe-p16-05.png" width=90%>
     </p>
 
