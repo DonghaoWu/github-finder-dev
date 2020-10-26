@@ -726,6 +726,9 @@ const User = ({ getUser, user, loading, match, getUserRepos, repos }) => {
 __`本章用到的全部资料：`__
 
 - [React Context documentation.](https://reactjs.org/docs/context.html)
+- [Github API.](https://developer.github.com/v3/)
+- [Deprecating API authentication through query parameters](https://developer.github.com/changes/2020-02-10-deprecating-auth-through-query-param/)
+- [curl 的用法指南](https://www.ruanyifeng.com/blog/2019/09/curl-reference.html)
 
 - #### Click here: [BACK TO CONTENT](#16.0)
 - #### Click here: [BACK TO NAVIGASTION](https://github.com/DonghaoWu/Frontend-tools-demo/blob/master/README.md)
