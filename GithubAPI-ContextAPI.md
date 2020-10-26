@@ -518,7 +518,66 @@ const User = ({ getUser, user, loading, match, getUserRepos, repos }) => {
 
 - #### Click here: [BACK TO CONTENT](#16.0)
 
------------------------------------------------------------------
+1. Install dependency
+
+    ```bash
+    $ sudo npm i -g netlify-cli
+    ```
+
+2. new file: netlify.toml
+
+    __`Location:.edition-2-context/src/netlify.toml`__
+
+    ```toml
+    [build]
+        publish='build'
+    ```
+
+3. bash command
+
+    ```bash
+    $ netlify init
+    ```
+
+    <p align="center">
+        <img src="../assets/fe-p16-01.png" width=90%>
+    </p>
+
+    -----------------------------------------------------------------
+
+    <p align="center">
+        <img src="../assets/fe-p16-02.png" width=90%>
+    </p>
+
+    -----------------------------------------------------------------
+
+4. add env variables
+
+    <p align="center">
+        <img src="../assets/fe-p16-03.png" width=90%>
+    </p>
+
+    -----------------------------------------------------------------
+
+    <p align="center">
+        <img src="../assets/fe-p16-04.png" width=90%>
+    </p>
+
+    -----------------------------------------------------------------
+        <p align="center">
+        <img src="../assets/fe-p16-05.png" width=90%>
+    </p>
+
+    -----------------------------------------------------------------
+
+5. bash command
+
+    ```bash
+    $ npm run build
+    $ netlify deploy --prod
+    ```
+
+    -----------------------------------------------------------------
 
 __`本章用到的全部资料：`__
 
