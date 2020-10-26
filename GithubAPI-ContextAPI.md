@@ -1,6 +1,6 @@
 # Front end development tools (Part 16)
 
-### `Key Words: React hooks, Github APi, Context patterns, react syntax(语法), netlify.`
+### `Key Words: React hooks, Github APi, Context patterns, react syntax(语法), netlify, Github api update, convert curl to axios.`
 
 - #### Click here: [BACK TO NAVIGASTION](https://github.com/DonghaoWu/Frontend-tools-demo/blob/master/README.md)
 
@@ -25,7 +25,6 @@
 - [Github API.](https://developer.github.com/v3/)
 - [React Context documentation.](https://reactjs.org/docs/context.html)
 
-
 #### `Github API:`
 
 - `Search a user`
@@ -45,6 +44,7 @@
 - [16.2 Some react knowledge.](#16.2)
 - [16.3 Set up context API.](#16.3)
 - [16.4 Deploy on netlify.](#16.4)
+- [16.5 Github API update.](#16.5)
 
 ------------------------------------------------------------
 
@@ -578,6 +578,150 @@ const User = ({ getUser, user, loading, match, getUserRepos, repos }) => {
     ```
 
     -----------------------------------------------------------------
+
+### <span id="16.5">`Step5: Github API update.(05/2021)`</span>
+
+- #### Click here: [BACK TO CONTENT](#16.0)
+
+- [Deprecating API authentication through query parameters](https://developer.github.com/changes/2020-02-10-deprecating-auth-through-query-param/)
+
+1. Using client_id/client_secret as a query param
+
+    - If you're using an OAuth app's client_id and client_secret to make unauthenticated calls with a higher rate limit similar to
+
+    ```bash
+    $ curl "https://api.github.com/user/repos?client_id=my_client_id&client_secret=my_secret_id"
+    ```
+
+    - Instead, you should use the following format:
+
+    ```bash
+    $ curl -u my_client_id:my_client_secret https://api.github.com/user/repos
+    ```
+
+2. [curl 的用法指南](https://www.ruanyifeng.com/blog/2019/09/curl-reference.html)
+
+3. 修改代码。
+    - Search user
+    ```js
+    //From
+
+    const searchUsers = async (text) => {
+        setLoading();
+        try {
+            const res = await axios.get(`https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+            dispatch({
+                type: SEARCH_USERS,
+                payload: res.data.items
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    //To
+
+    const searchUsers = async (text) => {
+        setLoading();
+        try {
+            const res = await axios.get('https://api.github.com/search/users',
+                {
+                    params: {
+                        q: text,
+                        client_id: githubClientId,
+                        client_secret: githubClientSecret
+                    }
+                }
+            )
+            dispatch({
+                type: SEARCH_USERS,
+                payload: res.data.items
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    ```
+
+    - Get a user
+    ```js
+    //From
+
+    const getUser = async (username) => {
+        setLoading();
+        try {
+            const res = await axios.get(`https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+
+            dispatch({
+                type: GET_USER,
+                payload: res.data
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    //To
+
+    const getUser = async (username) => {
+        setLoading();
+        try {
+            const res = await axios.get(`https://api.github.com/users/${username}`,
+                {
+                    params: {
+                        client_id: githubClientId,
+                        client_secret: githubClientSecret
+                    }
+                });
+
+            dispatch({
+                type: GET_USER,
+                payload: res.data
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    ```
+
+    - Get a repo.
+    ```js
+    //From
+
+    const getUserRepos = async (username) => {
+        setLoading(true);
+        try {
+            const res = await axios.get(`https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+
+            dispatch({
+                type: GET_REPOS,
+                payload: res.data
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    //To
+
+    const getUserRepos = async (username) => {
+        setLoading(true);
+        try {
+            const res = await axios.get(`https://api.github.com/users/${username}/repos`, {
+                params: {
+                    per_page: '5',
+                    sort: 'created:asc',
+                    client_id: githubClientId,
+                    client_secret: githubClientSecret
+                }
+            });
+
+            dispatch({
+                type: GET_REPOS,
+                payload: res.data
+            })
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    ```
 
 __`本章用到的全部资料：`__
 
