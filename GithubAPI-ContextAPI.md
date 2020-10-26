@@ -29,13 +29,13 @@
 #### `Github API:`
 
 - `Search a user`
-- https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
+    - https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`
 
 - `Get a user`
-- https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}
+    - https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}
 
 - `Get repos`
-- https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}
+    - https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}
 
 ### <span id="16.0">`Brief Contents & codes position`</span>
 
@@ -540,13 +540,13 @@ const User = ({ getUser, user, loading, match, getUserRepos, repos }) => {
     ```
 
     <p align="center">
-        <img src="../assets/fe-p16-01.png" width=90%>
+        <img src="./assets/fe-p16-01.png" width=90%>
     </p>
 
     -----------------------------------------------------------------
 
     <p align="center">
-        <img src="../assets/fe-p16-02.png" width=90%>
+        <img src="./assets/fe-p16-02.png" width=90%>
     </p>
 
     -----------------------------------------------------------------
@@ -554,18 +554,18 @@ const User = ({ getUser, user, loading, match, getUserRepos, repos }) => {
 4. add env variables
 
     <p align="center">
-        <img src="../assets/fe-p16-03.png" width=90%>
+        <img src="./assets/fe-p16-03.png" width=90%>
     </p>
 
     -----------------------------------------------------------------
 
     <p align="center">
-        <img src="../assets/fe-p16-04.png" width=90%>
+        <img src="./assets/fe-p16-04.png" width=90%>
     </p>
 
     -----------------------------------------------------------------
         <p align="center">
-        <img src="../assets/fe-p16-05.png" width=90%>
+        <img src="./assets/fe-p16-05.png" width=90%>
     </p>
 
     -----------------------------------------------------------------
