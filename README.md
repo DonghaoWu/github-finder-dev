@@ -3,10 +3,13 @@
 <p align="center">
 <img src="./assets/github-finder-01.png" width=85%>
 </p>
+
 -----------------------------------------------------
+
 <p align="center">
 <img src="./assets/github-finder-02.png" width=85%>
 </p>
+
 -----------------------------------------------------
 
 - [Part 16 - Github API, Context API. :gem::gem:](https://github.com/DonghaoWu/github-finder-doc/blob/main/GithubAPI-ContextAPI.md)
