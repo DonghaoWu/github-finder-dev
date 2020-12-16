@@ -1,6 +1,6 @@
 # github-finder-doc
 
-- Deploy Heroku URL:[https://github-finder-2021.netlify.app/](https://github-finder-2021.netlify.app/)
+- Deploy Netify URL:[https://github-finder-2021.netlify.app/](https://github-finder-2021.netlify.app/)
 
 -----------------------------------------------------
 
